@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+
+</h:head>
+<h:body>
+	<ui:composition template="../template.xhtml">
+		<ui:define name="content">
+			<h:panelGrid columns="1" styleClass="default">
+
+				<h:form id="listOrdersForm">
+					<h:outputText value="Select Customer:" />
+					<h:selectOneMenu id="selectCustomer" styleClass="buttons"
+						value="#{customerView.customerId}">
+						<f:selectItems value="#{storeManager.listCustomers}" />
+					</h:selectOneMenu>
+					<h:commandButton action="#{storeManager.findOrders}"
+						value="ListOrders" styleClass="buttons" />
+
+					<h:dataTable value="#{storeManager.listOrders}" var="orders"
+						styleClass="table" headerClass="table-header"
+						rowClasses="table-odd-row,table-even-row">
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Product" />
+							</f:facet>
+							<h:outputText value="#{orders.product}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Price" />
+							</f:facet>
+							<h:outputText value="#{orders.price}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Quantity" />
+							</f:facet>
+							<h:outputText value="#{orders.quantity}" />
+						</h:column>
+
+					</h:dataTable>
+
+					<h:commandButton action="newCustomer" styleClass="buttons"
+						value="Insert Customer" />
+					<h:commandButton action="newOrder" styleClass="buttons"
+						value="Insert Order" />
+				</h:form>
+			</h:panelGrid>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+
