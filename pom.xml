@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>board</groupId>
+	<artifactId>PinBoard</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<version.glassfish>3.1.2-b20</version.glassfish>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.glassfish.main.extras</groupId>
+			<artifactId>glassfish-embedded-all</artifactId>
+			<version>${version.glassfish}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>java.net-staging-repository-group</id>
+			<name>Java.Net Staging Maven Repository Group</name>
+			<url>https://maven.java.net/content/groups/staging</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<finalName>PinBoard</finalName>
+	</build>
+
+</project>
