@@ -29,9 +29,7 @@ body {
 			<div class="navbar-inner">
 				<div class="container-fluid">
 					<div id="header">
-						<ui:insert name="header">
-							<ui:include src="commonHeader.xhtml" />
-						</ui:insert>
+						<ui:insert name="header"/>
 					</div>
 				</div>
 			</div>
@@ -41,16 +39,16 @@ body {
 		<div class="container-fluid row-fluid">
 			<div class="span2 well sidebar-nav">
 				<div id="content">
-					<ui:insert name="content">
-						<ui:include src="commonContent.xhtml" />
+					<ui:insert name="leftmenu">
+						<!-- <ui:include src="commonContent.xhtml" /> -->
 					</ui:insert>
 				</div>
 			</div>
 
 			<div class="span10 well">
 				<div id="footer">
-					<ui:insert name="footer">
-						<ui:include src="commonFooter.xhtml" />
+					<ui:insert name="content">
+						<!-- <ui:include src="commonFooter.xhtml" /> -->
 					</ui:insert>
 				</div>
 			</div>

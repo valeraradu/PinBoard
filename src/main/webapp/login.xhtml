@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+
+	<ui:composition template="commonLayout.xhtml">
+
+		<ui:define name="header">
+			<ui:include src="commonHeader.xhtml" />
+		</ui:define>
+
+
+		<ui:define name="leftmenu">
+			<ui:include src="commonLeftMenu.xhtml" />
+		</ui:define>
+		
+		<ui:define name="content">
+			<h2>signIn</h2>
+
+			<h3>Register</h3>
+
+			<div class="row-fluid">
+
+				<div class="span5">
+					<h:form>
+						<h:panelGrid columns="2">
+							<f:facet name="header">
+								<h:outputText value="#{i18n.yes}" />
+							</f:facet>
+							<h:outputLabel value="username" for="login" />
+							<h:inputText id="login" value="#{credentials.login}"
+								maxlength="10" size="12" />
+							<h:outputLabel value="password" for="password" />
+							<h:inputSecret id="password" value="#{credentials.password}"
+								maxlength="10" size="12" />
+							<f:facet name="footer">
+								<h:commandButton value="login"
+									action="#{accountController.doLogin}" type="submit" />
+								<h:outputLabel value="user/user - admin/admin" />
+							</f:facet>
+						</h:panelGrid>
+					</h:form>
+				</div>
+
+				<div class="span5">
+					<h:form>
+						<h:panelGrid columns="2">
+							<f:facet name="header">
+								<h:outputText value="#{i18n.signon_signup}" />
+							</f:facet>
+							<h:outputLabel value="username" for="newlogin" />
+							<h:inputText id="newlogin" value="#{credentials.login}"
+								maxlength="10" size="12" />
+							<h:outputLabel value="password" for="newpassword" />
+							<h:inputSecret id="newpassword" value="#{credentials.password}"
+								maxlength="10" size="12" />
+							<h:outputLabel value="repeat password:" for="newpasswordagain" />
+							<h:inputSecret id="newpasswordagain"
+								value="#{credentials.password2}" maxlength="10" size="12" />
+							<f:facet name="footer">
+								<h:commandButton value="register"
+									action="#{accountController.doCreateNewAccount}" type="submit" />
+							</f:facet>
+						</h:panelGrid>
+					</h:form>
+				</div>
+			</div>
+
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+</html>
