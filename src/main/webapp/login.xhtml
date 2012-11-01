@@ -17,59 +17,22 @@
 		<ui:define name="leftmenu">
 			<ui:include src="commonLeftMenu.xhtml" />
 		</ui:define>
-		
+
 		<ui:define name="content">
 			<h2>signIn</h2>
 
 			<h3>Register</h3>
 
-			<div class="row-fluid">
-
-				<div class="span5">
-					<h:form>
-						<h:panelGrid columns="2">
-						
-							<f:facet name="header">
-								<h:outputText value="#{i18n.yes}" />
-							</f:facet>
-							
-							<h:outputLabel value="username" for="login" />
-							<h:inputText id="login" value="#{credentialsBean.login}" maxlength="10" size="12" />
-							<h:outputLabel value="password" for="password" />
-							<h:inputSecret id="password" value="#{credentialsBean.password}" maxlength="10" size="12" />
-							
-							<f:facet name="footer">
-								<h:commandButton value="login" action="#{accountController.doLogin}" type="submit" />
-								<h:outputLabel value="user/user - admin/admin" />
-							</f:facet>
-							
-						</h:panelGrid>
-					</h:form>
-				</div>
-
-				<div class="span5">
-					<h:form>
-						<h:panelGrid columns="2">
-							<f:facet name="header">
-								<h:outputText value="#{i18n.signon_signup}" />
-							</f:facet>
-							<h:outputLabel value="username" for="newlogin" />
-							<h:inputText id="newlogin" value="#{credentials.login}"
-								maxlength="10" size="12" />
-							<h:outputLabel value="password" for="newpassword" />
-							<h:inputSecret id="newpassword" value="#{credentials.password}"
-								maxlength="10" size="12" />
-							<h:outputLabel value="repeat password:" for="newpasswordagain" />
-							<h:inputSecret id="newpasswordagain"
-								value="#{credentials.password2}" maxlength="10" size="12" />
-							<f:facet name="footer">
-								<h:commandButton value="register"
-									action="#{accountController.doCreateNewAccount}" type="submit" />
-							</f:facet>
-						</h:panelGrid>
-					</h:form>
-				</div>
-			</div>
+			<h:form>
+				<h:panelGrid columns="2" rendered="#{!login.loggedIn}">
+					<h:outputLabel for="username">Username:</h:outputLabel>
+					<h:inputText id="username" value="#{credentials.username}" />
+					<h:outputLabel for="password">Password:</h:outputLabel>
+					<h:inputText id="password" value="#{credentials.password}" />
+				</h:panelGrid>
+				<h:commandButton value="Login" action="#{login.login}" rendered="#{!login.loggedIn}" />
+				<h:commandButton value="Logout" acion="#{login.logout}" rendered="#{login.loggedIn}" />
+			</h:form>
 
 		</ui:define>
 
