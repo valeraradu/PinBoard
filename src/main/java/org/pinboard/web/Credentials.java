@@ -5,7 +5,6 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-
 public class Credentials {
 
     

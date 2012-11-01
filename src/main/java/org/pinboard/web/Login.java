@@ -21,14 +21,9 @@ public class Login implements Serializable {
     @PersistenceContext
     EntityManager userDatabase;
 
-
     private User user;
 
-    
-
     public void login() {
-
-        
 
         List<User> results =  userDatabase.createQuery(
 
@@ -40,42 +35,23 @@ public class Login implements Serializable {
 
            .getResultList();
 
-        
-
         if ( !results.isEmpty() ) {
-
            user = results.get(0);
 
         }
-
-        
-
-    }
-
-    
+    }  
 
     public void logout() {
-
         user = null;
-
-    }
-
-    
+    }    
 
     public boolean isLoggedIn() {
-
        return user!=null;
-
-    }
-
-    
+    }   
 
     @Produces
     @LoggedIn User getCurrentUser() {
-
         return user;
-
     }
-
 
 }
