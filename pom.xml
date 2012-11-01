@@ -6,6 +6,21 @@
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
+	<properties>
+		<version.java>1.6</version.java>
+		<version.javaee>6.0</version.javaee>
+		<version.glassfish>3.1.2-b20</version.glassfish>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${version.javaee}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
 
 	<build>
 		<finalName>PinBoard</finalName>
