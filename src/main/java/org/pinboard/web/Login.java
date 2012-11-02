@@ -3,6 +3,7 @@ package org.pinboard.web;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Current;
@@ -10,6 +11,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.ServletException;
+import javax.transaction.UserTransaction;
 
 
 @SessionScoped
@@ -26,6 +29,9 @@ public class Login implements Serializable {
     @PersistenceContext
     EntityManager em;
 
+    @Resource
+    private UserTransaction utx; 
+    
     private User user;
 
 	public void login() {
@@ -45,6 +51,21 @@ public class Login implements Serializable {
         user = null;
     }    
 
+	public void register() throws Exception {
+		
+		User user = new User(credentials.getUsername(),
+				credentials.getPassword());
+		try {
+			utx.begin();
+			em.persist(user);
+			this.user = user;
+			utx.commit();
+		} catch (Exception nse) {
+			throw new Exception(nse);
+		}
+
+	}
+    
     public boolean isLoggedIn() {
        return user!=null;
     }   
