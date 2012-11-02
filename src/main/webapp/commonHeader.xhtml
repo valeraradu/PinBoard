@@ -6,13 +6,28 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <body>
 	<ui:composition>
-		<h4>
-			<h:link outcome="/login.xhtml" value="LogIn/Register" />
-		</h4>
-		<div class="navbar-search nav pull-right">
-			<h:inputText class="search-query" value="value" />
-			<h:commandButton action="#{catalogController.doSearch}"	value="search" class="btn" />
-		</div>
+		<h:form>
+			<h5>
+				<h:link outcome="/login.xhtml" value="LogIn/Register"
+					rendered="#{!login.loggedIn}" />
+
+				<h:commandLink outcome="/login.xhtml" value="Logout"
+					action="#{login.logout}" rendered="#{login.loggedIn}" />
+
+			</h5>
+
+			<h4>
+				<h:outputText value=" Welcome #{login.getCurrentUser().username}"
+					rendered="#{login.loggedIn}" />
+			</h4>
+
+
+			<div class="navbar-search nav pull-right">
+				<h:inputText class="search-query" value="value" />
+				<h:commandButton action="#{catalogController.doSearch}"
+					value="search" class="btn" />
+			</div>
+		</h:form>
 	</ui:composition>
 </body>
 </html>
