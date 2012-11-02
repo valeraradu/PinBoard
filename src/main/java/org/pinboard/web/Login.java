@@ -33,7 +33,6 @@ public class Login implements Serializable {
 
         if ( !results.isEmpty() ) {
            user = results.get(0);
-
         }
     }  
 
