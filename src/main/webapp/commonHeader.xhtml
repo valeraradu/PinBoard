@@ -23,8 +23,8 @@
 
 
 			<div class="navbar-search nav pull-right">
-				<h:inputText class="search-query" value="value" />
-				<h:commandButton action="#{catalogController.doSearch}"
+				<h:inputText class="search-query" value="#{pinManager.keyword}" />
+				<h:commandButton action="#{pinManager.doSearch()}"
 					value="search" class="btn" />
 			</div>
 		</h:form>

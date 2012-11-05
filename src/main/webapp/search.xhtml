@@ -19,7 +19,7 @@
 		</ui:define>
 
 		<ui:define name="content">
-			<h:dataTable value="#{pinManager.doFindPins()}" var="bk">
+			<h:dataTable value="#{pinManager.pins}" var="bk">
 				<h:column>
 					<h5><h:outputText value="#{bk.message}" /></h5><br/>
 					<h:outputText class="pull-right" value="posted by #{bk.createdBy.username}"/>
