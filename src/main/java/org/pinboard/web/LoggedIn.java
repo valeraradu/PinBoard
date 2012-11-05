@@ -6,9 +6,11 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;
 
+import javax.inject.Qualifier;
 import javax.xml.ws.BindingType;
 
+@Qualifier
 @Retention(RUNTIME)
-@Target({TYPE, METHOD, FIELD})
+@Target({TYPE, METHOD, FIELD, PARAMETER})
 @BindingType
 public @interface LoggedIn {}

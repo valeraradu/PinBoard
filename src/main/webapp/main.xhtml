@@ -3,7 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:body>
 
 	<ui:composition template="commonLayout.xhtml">
@@ -18,13 +19,14 @@
 		</ui:define>
 
 		<ui:define name="content">
-			messages to be included here<br/>
-			messages to be included here<br/>
-			messages to be included here<br/>
-			messages to be included here<br/>
-			messages to be included here<br/>
-			messages to be included here<br/>
-			messages to be included here<br/>
+
+			<h:dataTable value="#{pinManager.getPins()}" var="bk">
+				<h:column>
+					<h5><h:outputText value="#{bk.message}" /></h5><br/>
+					<h:outputText class="pull-right" value="posted by #{bk.createdBy.username}"/>
+					<hr/>
+				</h:column>
+			</h:dataTable>
 		</ui:define>
 
 	</ui:composition>

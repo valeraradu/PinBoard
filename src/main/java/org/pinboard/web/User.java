@@ -31,4 +31,19 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/*@Override
+	public boolean equals(Object o) {
+
+		if (this.username.equals(((User) o).getUsername())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@Override
+	public int hashCode() {
+		return username.hashCode();
+	}*/
 }

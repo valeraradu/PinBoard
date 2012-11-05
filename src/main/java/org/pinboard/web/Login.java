@@ -34,7 +34,7 @@ public class Login implements Serializable {
     
     private User user;
 
-	public void login() {
+	public String login() {
     	
         List<User> results =  em.createQuery(
            "select u from User u where u.username=:username and u.password=:password")
@@ -45,13 +45,15 @@ public class Login implements Serializable {
         if ( !results.isEmpty() ) {
            user = results.get(0);
         }
+        
+        return "main.xhtml";
     }  
 
     public void logout() {
         user = null;
     }    
 
-	public void register() throws Exception {
+	public String register() throws Exception {
 		
 		User user = new User(credentials.getUsername(),
 				credentials.getPassword());
@@ -63,7 +65,8 @@ public class Login implements Serializable {
 		} catch (Exception nse) {
 			throw new Exception(nse);
 		}
-
+		
+		return "main.xhtml";
 	}
     
     public boolean isLoggedIn() {
@@ -71,7 +74,8 @@ public class Login implements Serializable {
     }   
 
     @Produces
-    @LoggedIn User getCurrentUser() {
+    @LoggedIn
+    User getCurrentUser() {
         return user;
     }
 

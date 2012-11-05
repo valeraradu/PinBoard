@@ -3,7 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:body>
 
 	<ui:composition template="commonLayout.xhtml">
@@ -18,7 +19,15 @@
 		</ui:define>
 
 		<ui:define name="content">
-			<h:inputTextarea cols="50" rows="4" />
+			<h:form>
+				<h:inputTextarea cols="50" rows="4" value="#{pinEditor.message}" />
+				<h:commandButton value="Post New Pin" action="#{pinManager.saveNewPin}" type="submit" />
+				<h:selectOneMenu value="#{pinEditor.visibility}" rendered="#{login.loggedIn}">
+					<f:selectItem itemValue="0" itemLabel="only for me" />
+					<f:selectItem itemValue="1" itemLabel="for users" />
+					<f:selectItem itemValue="2" itemLabel="for all" />
+				</h:selectOneMenu>
+			</h:form>
 		</ui:define>
 
 	</ui:composition>

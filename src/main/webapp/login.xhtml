@@ -19,9 +19,6 @@
 		</ui:define>
 
 		<ui:define name="content">
-			<h2>signIn</h2>
-
-			<h3>Register</h3>
 
 			<div class="row-fluid">
 
@@ -29,7 +26,7 @@
 					<h:form>
 						<h:panelGrid columns="2">
 							<f:facet name="header">
-								<h:outputText value="#{i18n.yes}" />
+								<h:outputText value="Sign In" />
 							</f:facet>
 							<h:outputLabel value="username" for="login" />
 							<h:inputText id="login" value="#{credentials.username}"
@@ -50,7 +47,7 @@
 					<h:form>
 						<h:panelGrid columns="2">
 							<f:facet name="header">
-								<h:outputText value="#{i18n.signon_signup}" />
+								<h:outputText value="Register" />
 							</f:facet>
 							<h:outputLabel value="username" for="newlogin" />
 							<h:inputText id="newlogin" value="#{credentials.username}"
