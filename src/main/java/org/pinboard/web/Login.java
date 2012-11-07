@@ -35,7 +35,7 @@ public class Login implements Serializable {
 
 	private User user;
 
-	public String login() { 
+	public String login() {
 
 		FacesMessage message;
 
@@ -46,6 +46,7 @@ public class Login implements Serializable {
 			return "login.xhtml";
 		}
 
+		@SuppressWarnings("unchecked")
 		List<User> results = em
 				.createQuery(
 						"select u from User u where u.username=:username and u.password=:password")
@@ -82,8 +83,7 @@ public class Login implements Serializable {
 			utx.commit();
 		} catch (javax.transaction.RollbackException nse) {
 			FacesMessage message;
-			message = new FacesMessage(
-					"User already exists, try again and be creative ;)");
+			message = new FacesMessage("User already exists, try again and be creative ;)");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return "login.xhtml";
