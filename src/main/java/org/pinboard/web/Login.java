@@ -35,7 +35,7 @@ public class Login implements Serializable {
 
 	private User user;
 
-	public String login() {
+	public String login() { 
 
 		FacesMessage message;
 
