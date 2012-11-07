@@ -1,13 +1,9 @@
 package org.pinboard.web;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -20,8 +16,6 @@ public class Pin {
 	@Column(length=2000)
 	private String message;
 	private int visibility;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
 
 	public User getCreatedBy() {
 		return CreatedBy;
@@ -45,13 +39,5 @@ public class Pin {
 
 	public void setVisibility(int visibility) {
 		this.visibility = visibility;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 }

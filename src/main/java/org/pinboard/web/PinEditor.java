@@ -1,8 +1,5 @@
 package org.pinboard.web;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
@@ -14,8 +11,7 @@ public class PinEditor {
 
 	private User CreatedBy;
 	private String message;
-	private Integer visibility;
-	private Date date;
+	private Integer visibility=2;
 	
 	public User getCreatedBy() {
 		return CreatedBy;
@@ -38,11 +34,7 @@ public class PinEditor {
 		Pin pin = new Pin();
 		pin.setCreatedBy(CreatedBy);
 		pin.setMessage(message);
-		if (CreatedBy == null)
-			pin.setVisibility(2);
-		else
-			pin.setVisibility(visibility);
-		pin.setDate(Calendar.getInstance().getTime());
+		pin.setVisibility(visibility);
 		return pin;
 	}
 
