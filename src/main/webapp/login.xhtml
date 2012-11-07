@@ -46,22 +46,21 @@
 				<div class="span5">
 					<h:form>
 						<h:panelGrid columns="2">
+						
 							<f:facet name="header">
 								<h:outputText value="Register" />
 							</f:facet>
 							<h:outputLabel value="username" for="newlogin" />
-							<h:inputText id="newlogin" value="#{credentials.username}"
-								maxlength="10" size="12" />
+							<h:inputText id="newlogin" value="#{credentials.username}" maxlength="10" size="12" required="true"/>
 							<h:outputLabel value="password" for="newpassword" />
 							<h:inputSecret id="newpassword" value="#{credentials.password}"
 								maxlength="10" size="12" />
 							<h:outputLabel value="repeat password:" for="newpasswordagain" />
-							<h:inputSecret id="newpasswordagain"
-								value="#{credentials.password}" maxlength="10" size="12" />
+							<h:inputSecret id="newpasswordagain" value="#{credentials.password}" maxlength="10" size="12" />
 							<f:facet name="footer">
-								<h:commandButton value="register"
-									action="#{login.register}" type="submit" />
+								<h:commandButton value="register" action="#{login.register}" type="submit" />
 							</f:facet>
+							
 						</h:panelGrid>
 					</h:form>
 				</div>
