@@ -21,17 +21,10 @@ public class Login implements Serializable {
 
 
     /*@Current
-<<<<<<< OURS
     Credentials credentials;*/  
     
     @Inject
     private Credentials credentials; 
-=======
-    Credentials credentials;*/
-    
-    @Inject
-    private Credentials credentials;
->>>>>>> THEIRS
 
     @PersistenceContext
     EntityManager em;
@@ -56,7 +49,6 @@ public class Login implements Serializable {
         return "main.xhtml";
     }  
 
-<<<<<<< OURS
 <<<<<<< OURS
 		if ("".equals(credentials.getUsername())) {
 			message = new FacesMessage("You need to give a user");
@@ -95,11 +87,6 @@ public class Login implements Serializable {
         user = null;
     }    
 >>>>>>> THEIRS
-=======
-    public void logout() {
-        user = null;
-    }    
->>>>>>> THEIRS
 
 	public String register() throws Exception {
 		
@@ -111,7 +98,6 @@ public class Login implements Serializable {
 			this.user = user;
 			utx.commit();
 <<<<<<< OURS
-<<<<<<< OURS
 		} catch (javax.transaction.RollbackException nse) {
 			FacesMessage message;
 			message = new FacesMessage("User already exists, try again and be creative ;)");
@@ -119,10 +105,6 @@ public class Login implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return "login.xhtml";
 
-=======
-		} catch (Exception nse) {
-			throw new Exception(nse);
->>>>>>> THEIRS
 =======
 		} catch (Exception nse) {
 			throw new Exception(nse);
