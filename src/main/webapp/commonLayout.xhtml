@@ -28,8 +28,10 @@ body {
 		<div class="navbar navbar-fixed-top navbar-inner container-fluid row-fluid nav-collapse">
 			<ui:insert name="header" />
 		</div>
-		
-        <div class="page-header"/>
+		<div class="page-header">
+                <h:messages globalOnly="true" errorClass="alert alert-error" warnClass="alert"
+                            infoClass="alert alert-info"/>
+            </div>
 
 		<div class="container-fluid row-fluid">
 			<div class="span2 well sidebar-nav">

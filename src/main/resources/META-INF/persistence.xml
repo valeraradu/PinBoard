@@ -7,7 +7,8 @@
 	<persistence-unit name="PinBoardPU" transaction-type="JTA">
 		<jta-data-source>java:global/jdbc/PinBoardDS</jta-data-source>
 		<properties>
-			<!-- Properties for EclipseLink > <property name="eclipselink.target-database" 	value="DERBY"/ -->
+			<!-- Properties for EclipseLink >
+		    <property name="eclipselink.target-database" 	value="DERBY"/ -->
 			<property name="eclipselink.target-database" value="MYSQL" />
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
 			<!-- <property name="eclipselink.ddl-generation" value="create-or-extend-tables" /> -->
