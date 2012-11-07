@@ -19,16 +19,15 @@
 		</ui:define>
 
 		<ui:define name="content">
-			<h:dataTable value="#{pinManager.pins}" var="bk">
-				<h:column>
-					<h5><h:outputText value="#{bk.message}" /></h5><br/>
-					<div  class="pull-right">
-					<h:outputText value="posted by #{bk.createdBy.username}" rendered="#{!(bk.createdBy==null)}"/>
-					<h:outputText value=" at #{bk.date}"/>
-					</div>
-					<hr/>
-				</h:column>
-			</h:dataTable>
+			<h:form>
+				<h:inputTextarea cols="50" rows="4" value="#{pinEditor.message}" />
+				<h:commandButton value="Post New Pin" action="#{pinManager.saveNewPin}" type="submit" />
+				<h:selectOneMenu value="#{pinEditor.visibility}" rendered="#{login.loggedIn}">
+					<f:selectItem itemValue="0" itemLabel="only for me" />
+					<f:selectItem itemValue="1" itemLabel="for users" />
+					<f:selectItem itemValue="2" itemLabel="for all" />
+				</h:selectOneMenu>
+			</h:form>
 		</ui:define>
 
 	</ui:composition>

@@ -28,7 +28,7 @@ public class Login implements Serializable {
 	private Credentials credentials;
 
 	@PersistenceContext
-	EntityManager em; 
+	EntityManager em;
 
 	@Resource
 	private UserTransaction utx;
