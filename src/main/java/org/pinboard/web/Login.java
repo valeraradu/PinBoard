@@ -6,6 +6,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Current;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,42 +16,29 @@ import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.transaction.UserTransaction;
 
-
 @SessionScoped
 @Named
 public class Login implements Serializable {
 
+	/*
+	 * @Current Credentials credentials;
+	 */
 
-    /*@Current
-    Credentials credentials;*/  
-    
-    @Inject
-    private Credentials credentials; 
+	@Inject
+	private Credentials credentials;
 
-    @PersistenceContext
-    EntityManager em;
+	@PersistenceContext
+	EntityManager em;
 
-    @Resource
-    private UserTransaction utx; 
-    
-    private User user;
+	@Resource
+	private UserTransaction utx;
+
+	private User user;
 
 	public String login() {
-    	
-        List<User> results =  em.createQuery(
-           "select u from User u where u.username=:username and u.password=:password")
-           .setParameter("username", credentials.getUsername())
-           .setParameter("password", credentials.getPassword())
-           .getResultList();
 
-        if ( !results.isEmpty() ) {
-           user = results.get(0);
-        }
-        
-        return "main.xhtml";
-    }  
+		FacesMessage message;
 
-<<<<<<< OURS
 		if ("".equals(credentials.getUsername())) {
 			message = new FacesMessage("You need to give a user");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -57,7 +46,6 @@ public class Login implements Serializable {
 			return "login.xhtml";
 		}
 
-		@SuppressWarnings("unchecked")
 		List<User> results = em
 				.createQuery(
 						"select u from User u where u.username=:username and u.password=:password")
@@ -82,14 +70,9 @@ public class Login implements Serializable {
 	public void logout() {
 		user = null;
 	}
-=======
-    public void logout() {
-        user = null;
-    }    
->>>>>>> THEIRS
 
 	public String register() throws Exception {
-		
+
 		User user = new User(credentials.getUsername(),
 				credentials.getPassword());
 		try {
@@ -97,31 +80,27 @@ public class Login implements Serializable {
 			em.persist(user);
 			this.user = user;
 			utx.commit();
-<<<<<<< OURS
 		} catch (javax.transaction.RollbackException nse) {
 			FacesMessage message;
-			message = new FacesMessage("User already exists, try again and be creative ;)");
+			message = new FacesMessage(
+					"User already exists, try again and be creative ;)");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return "login.xhtml";
 
-=======
-		} catch (Exception nse) {
-			throw new Exception(nse);
->>>>>>> THEIRS
 		}
-		
+
 		return "main.xhtml";
 	}
-    
-    public boolean isLoggedIn() {
-       return user!=null;
-    }   
 
-    @Produces
-    @LoggedIn
-    User getCurrentUser() {
-        return user;
-    }
+	public boolean isLoggedIn() {
+		return user != null;
+	}
+
+	@Produces
+	@LoggedIn
+	User getCurrentUser() {
+		return user;
+	}
 
 }
