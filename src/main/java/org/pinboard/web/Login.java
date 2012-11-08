@@ -9,7 +9,7 @@ import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Current;
-import javax.inject.Inject;
+import javax.inject.Inject; 
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -37,10 +37,10 @@ public class Login implements Serializable {
 
 	public String login() {
 
-		FacesMessage message;
+
 
 		if ("".equals(credentials.getUsername())) {
-			message = new FacesMessage("You need to give a user");
+			FacesMessage message = new FacesMessage("You need to give a user");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return "login.xhtml";
@@ -57,7 +57,7 @@ public class Login implements Serializable {
 			user = results.get(0);
 		} else {
 
-			message = new FacesMessage("Invalid email/password ");
+			FacesMessage message = new FacesMessage("Invalid email/password ");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return "login.xhtml";
@@ -72,7 +72,29 @@ public class Login implements Serializable {
 	}
 
 	public String register() throws Exception {
-
+		
+	
+		if ("".equals(credentials.getUsername())) {
+			FacesMessage message = new FacesMessage("You need to give a user");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			return "login.xhtml";
+		}
+		
+		if ("".equals(credentials.getPassword())) {
+			FacesMessage message = new FacesMessage("You need to give a password");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			return "login.xhtml";
+		}
+		
+		if (!credentials.getPassword().equals(credentials.getPassword2())) {
+			FacesMessage message = new FacesMessage("passwords did not match");
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			return "login.xhtml";
+		}
+		
 		User user = new User(credentials.getUsername(),
 				credentials.getPassword());
 		try {
