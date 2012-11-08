@@ -13,7 +13,7 @@ public class Credentials {
 
     private String password;
     
-    private String password2;
+    private String password2; 
 
     
 
