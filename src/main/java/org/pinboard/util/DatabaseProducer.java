@@ -9,5 +9,5 @@ public class DatabaseProducer {
 
     @Produces
     @PersistenceContext(unitName = "PinBoardPU")
-    private EntityManager em;
+    private EntityManager em; 
 }

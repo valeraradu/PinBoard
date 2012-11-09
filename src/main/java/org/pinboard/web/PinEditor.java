@@ -10,14 +10,14 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class PinEditor {
+public class PinEditor { 
 
 	private User CreatedBy;
 	private String message;
-	private Integer visibility;
+	private Integer visibility; 
 	private Date date;
 	
-	public User getCreatedBy() {
+	public User getCreatedBy() { 
 		return CreatedBy;
 	}
 
